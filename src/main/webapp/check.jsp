@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
 	<head>
+		<meta name="viewport" content="width=device-width, user-scalable=yes">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	</head>
 	<body>
@@ -29,13 +30,13 @@
 			.card-item__status {
 				font-weight: bold;
 			}
+			@media (min-width: 576px) {
+				body {
+					background-color: green;
+				}
+			}
 		</style>
-		<div class="container" style="background-color: red;">
-			<div class="row">
-				<div class="col">dfgs</div>
-			</div>
-		</div>
-		
+			
 		<div class="container root">
 			<div class="row">
 				<div class="col">
@@ -58,7 +59,7 @@
 				
 			</div>
 			<div class="row ">
-				<div class="col">
+				<div class="col-12 col-md-6">
 					<div class="card-item">
 						<div class="card-item__status">
 							Письмо вернулось
@@ -67,7 +68,7 @@
 						<div class="card-item__adresse">df adf adf agr arg tgbsabgv s</div>
 					</div>
 				</div>
-				<div class="col">
+				<div class="col-12 col-md-6">
 					<div class="card-item">
 						<div class="card-item__status">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-circle-fill" viewBox="0 0 16 16">
