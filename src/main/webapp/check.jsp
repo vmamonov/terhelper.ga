@@ -30,21 +30,27 @@
 				font-weight: bold;
 			}
 		</style>
+		<div class="container" style="background-color: red;">
+			<div class="row">
+				<div class="col">dfgs</div>
+			</div>
+		</div>
+		
 		<div class="container root">
 			<div class="row">
-				<div class="col-sm-12">
+				<div class="col">
 					<form id="form_check">
 						<div class="form-group">
-							<button class="col-sm-12 btn btn-success btn-lg" type="submit">OK</button>
+							<button class="col btn btn-success btn-lg" type="submit">OK</button>
 						</div>
 						<div class="form-group">
-    						<input type="text" class="form-control form-control-lg" placeholder="Фамилия / Nachname">
+    						<input type="text" class="col form-control form-control-lg" placeholder="Фамилия / Nachname">
   						</div>	
 					</form>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-12 text-center">
+				<div class="col text-center">
 					<div id="preloader" class="spinner-border text-success" role="status" disabled>
 						<span class="sr-only">Loading...</span>
 					</div>
@@ -52,7 +58,7 @@
 				
 			</div>
 			<div class="row ">
-				<div class="col-sm-12 col-md-6">
+				<div class="col">
 					<div class="card-item">
 						<div class="card-item__status">
 							Письмо вернулось
@@ -61,7 +67,7 @@
 						<div class="card-item__adresse">df adf adf agr arg tgbsabgv s</div>
 					</div>
 				</div>
-				<div class="col-sm-12 col-md-6">
+				<div class="col">
 					<div class="card-item">
 						<div class="card-item__status">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-circle-fill" viewBox="0 0 16 16">
