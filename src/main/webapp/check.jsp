@@ -30,11 +30,6 @@
 			.card-item__status {
 				font-weight: bold;
 			}
-			@media (min-width: 576px) {
-				body {
-					background-color: green;
-				}
-			}
 		</style>
 			
 		<div class="container root">
