@@ -1,6 +1,8 @@
 package terhelper.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,12 +28,14 @@ public class LocationsGetterServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		response.setStatus(605);
 		try {
             TerritoryHelperApi api = new TerritoryHelperApi.Builder("5dc2c712c9c5472c859392b103064814", "6722084eb68640b4b9a6d8ab540e6f6f").build();
             Territory[] territories = TerritoriesRepo.getInstance().setApi(api).getAllTerritories();
             for (Territory t : territories) {
-                System.out.println(t.Address);
+            	response.getWriter().append(t.ViewUrl + "<br>");
             }
+//            response.setStatus(605);
         } catch (Exception ex) {
             System.out.println("Ошибка при работе с API TerritoryHelper: " + ex.getMessage());
             ex.printStackTrace();
