@@ -1,11 +1,18 @@
 package terhelper.servlets;
 
 import java.io.IOException;
+import java.io.InputStream;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 //import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import redis.clients.jedis.HostAndPort;
+import redis.clients.jedis.Jedis;
+import terhelper.services.datamart.NamesCheck;
+import terhelper.services.storages.Redis;
 
 /**
  * Servlet implementation class IndexServlet
@@ -26,8 +33,11 @@ public class CheckServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		NamesCheck dataMart = new NamesCheck();
+//		System.out.println(dataMart.getResult());
+		
 		response.setContentType("text/html;charset=UTF-8");
-		request.setAttribute("hello", "Hello from Servlet");
+		request.setAttribute("data", dataMart.getResult());
 		request.getRequestDispatcher("/check.jsp").forward(request, response);
 	}
 

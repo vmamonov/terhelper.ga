@@ -19,12 +19,12 @@ import java.util.StringTokenizer;
 public class LocalFileStorage implements DataStore<StoredCredential>{
     private File casheFile;
     public LocalFileStorage(String casheDirPath, String casheFileName) throws IOException {
-        File casheDir = new File(casheDirPath);
+        File casheDir = new File(Env.APP_PATH_ROOT + "/cashe");
         if (!casheDir.exists() || !casheDir.isDirectory()) {
             casheDir.mkdirs();
         }
 
-        casheFile = new File(casheDirPath + "/" + casheFileName);
+        casheFile = new File(Env.APP_PATH_ROOT + "/cashe/" + casheFileName);
         if (!casheFile.canRead()) {
             casheFile.createNewFile();
             casheFile.setReadable(true);

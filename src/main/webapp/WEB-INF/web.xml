@@ -22,16 +22,22 @@
   	<description></description>
   	<servlet-class>terhelper.servlets.LocationsGetterServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AuthConfirmServlet</servlet-name>
+  	<display-name>AuthConfirmServlet</display-name>
+  	<description></description>
+  	<servlet-class>terhelper.servlets.AuthConfirmServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>CheckServlet</servlet-name>
   	<url-pattern>/check</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>IndexServlet</servlet-name>
-  	<url-pattern>/</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
   	<servlet-name>LocationsGetterServlet</servlet-name>
   	<url-pattern>/get-locations</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AuthConfirmServlet</servlet-name>
+  	<url-pattern>/auth-confirm</url-pattern>
   </servlet-mapping>
 </web-app>
