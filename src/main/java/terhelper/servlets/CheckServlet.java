@@ -34,10 +34,9 @@ public class CheckServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		NamesCheck dataMart = new NamesCheck();
-//		System.out.println(dataMart.getResult());
-		
 		response.setContentType("text/html;charset=UTF-8");
 		request.setAttribute("data", dataMart.getResult());
+		request.setAttribute("dateUpdate", dataMart.getDateUpdate());
 		request.getRequestDispatcher("/check.jsp").forward(request, response);
 	}
 

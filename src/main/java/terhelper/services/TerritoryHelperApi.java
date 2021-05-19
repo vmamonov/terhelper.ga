@@ -120,7 +120,11 @@ public class TerritoryHelperApi extends Api{
     
     protected boolean isValidAuth () {
         Long Timestamp = credential.getExpirationTimeMilliseconds();
-        return (null != Timestamp) && (date.getTime() < Timestamp);
+        if (!(Timestamp instanceof Long)) {
+        	return false;
+        }
+        Integer minute = 60000;
+        return (date.getTime() - 2*minute) < Timestamp;
     }
         
     public OAuthGetAccessToken getUrlAuth() {
@@ -130,7 +134,18 @@ public class TerritoryHelperApi extends Api{
     
     public Credential doAuth() throws IOException {
     	credential = builder.flow.loadCredential(builder.userId);
-		if (credential != null
+    	if (credential.getExpiresInSeconds() == null
+    		|| credential.getRefreshToken() == null
+    		|| credential.getExpiresInSeconds() == null
+		) {
+    		return null;
+    	} else {
+    		return credential;
+    	}
+    	
+    	
+    	
+		/*if (credential != null
 		    && (credential.getRefreshToken() != null
 		    || credential.getExpiresInSeconds() == null
 		    || credential.getExpiresInSeconds() > 60)
@@ -138,7 +153,7 @@ public class TerritoryHelperApi extends Api{
 			return credential;
 		} else {
 			return null;
-		}
+		}*/
     	
 //    	AuthorizationCodeRequestUrl rr = builder.getAuthCodeManager().getFlow()
 //		.newAuthorizationUrl()

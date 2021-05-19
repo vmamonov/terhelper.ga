@@ -48,11 +48,22 @@
 				margin-right: 5px;
 				display: inline;
 			}
+			.date_upd {
+				color: white;
+			}
+			.date_upd:active {
+				color: black;
+			}
 		</style>
 		
 		
 
 		<div class="container root">
+			<div class="row">
+				<div class="col date_upd">
+					<%= request.getAttribute("dateUpdate") %> <br>	
+				</div>
+			</div>
 			<div class="row">
 				<div class="col">
 					<form id="form_check">
@@ -96,12 +107,18 @@
 						<div class="search-result-item__adresse">01855 Heiaflr fkdsjdfkgjnsv 25</div>
 					</div>
 				</div> -->
+				
 			</div>
 		</div>
 		
+		
 		<script type="text/javascript">
 			Window.dataRaw = <%= request.getAttribute("data") %>;
+			if (typeof Window.dataRaw === 'object') {
+				Window.dataRaw.sort((a, b) => a.name > b.name ? 1 : -1);
+			}
 			
+			$('.date_upd').append('Записей: ' + Window.dataRaw.length);
 			$('#search-result').hide();
 			$('#search-field').change(function() {
 				resultSearchRebuild(this);		

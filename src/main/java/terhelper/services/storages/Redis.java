@@ -16,11 +16,27 @@ public class Redis {
 	
 	public String set(String key, String value) {
 		return self.set(keyRoot +"."+ key, value);
-//		System.out.println("res " + res);
-//		return res;
 	}
 	
-	public Long exists(final String... keys) {
-		return self.exists(keys);
+	public String set(String key, String value, long seconds) {
+		String keyResult = keyRoot +"."+ key;
+		String result = self.set(keyResult, value);
+		self.expire(keyResult, seconds);
+		return result;
+	}
+	
+//	public Long set(String key, Long value, long seconds) {
+//		String keyResult = keyRoot +"."+ key;
+//		Long result = self.set(keyResult, value, seconds);
+//		self.expire(keyResult, seconds);
+//		return result;
+//	}
+	
+	public Boolean exists(final String key) {
+		return self.exists(keyRoot +"."+ key);
+	}
+	
+	public Long del(final String key) {
+		return self.del(keyRoot +"."+ key);
 	}
 }

@@ -17,9 +17,12 @@ import java.util.StringTokenizer;
 
 
 public class LocalFileStorage implements DataStore<StoredCredential>{
-    private File casheFile;
+    //private File casheFile;
+    private String keyRedisAccessToken = "at";
+    private String keyRedisRefreshToken = "rt";
+    private String keyRedisExpirationToken ="exp";
     public LocalFileStorage(String casheDirPath, String casheFileName) throws IOException {
-        File casheDir = new File(Env.APP_PATH_ROOT + "/cashe");
+        /*File casheDir = new File(Env.APP_PATH_ROOT + "/cashe");
         if (!casheDir.exists() || !casheDir.isDirectory()) {
             casheDir.mkdirs();
         }
@@ -28,7 +31,7 @@ public class LocalFileStorage implements DataStore<StoredCredential>{
         if (!casheFile.canRead()) {
             casheFile.createNewFile();
             casheFile.setReadable(true);
-        }
+        }*/
     }
 
     @Override
@@ -73,25 +76,35 @@ public class LocalFileStorage implements DataStore<StoredCredential>{
 
     @Override
     public StoredCredential get(String userId) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(casheFile));
+        /*BufferedReader reader = new BufferedReader(new FileReader(casheFile));
         String line = reader.readLine();
         if (null == line) {
             return null;
-        }
-        StoredCredential sc = new StoredCredential();
-        StringTokenizer sTokenizer = new StringTokenizer(line);
-        sc.setAccessToken((String) sTokenizer.nextElement());
-        sc.setRefreshToken((String) sTokenizer.nextElement());
-        sc.setExpirationTimeMilliseconds(Long.parseUnsignedLong((String) sTokenizer.nextElement()));
+        }  
+        StringTokenizer sTokenizer = new StringTokenizer(line);*/
+    	
+    	StoredCredential sc = new StoredCredential();
+        Redis redis = new Redis();
+        sc.setAccessToken(redis.get(keyRedisAccessToken));
+        sc.setRefreshToken(redis.get(keyRedisRefreshToken));
+        String exToken = redis.get(keyRedisExpirationToken);
+        if (null != exToken) {
+        	sc.setExpirationTimeMilliseconds(Long.parseUnsignedLong(exToken));
+        }  
         return sc;
     }
 
     @Override
     public DataStore<StoredCredential> set(String string, StoredCredential v) throws IOException {
-        System.out.println("ddddddddddddd " + v.getAccessToken());
-        FileWriter fw = new FileWriter(casheFile);
+        System.out.println("New access token wurde erhalten: " + v.getAccessToken());
+        Redis redis = new Redis();
+        redis.set(keyRedisAccessToken, v.getAccessToken());
+        redis.set(keyRedisRefreshToken, v.getRefreshToken());
+        redis.set(keyRedisExpirationToken, v.getExpirationTimeMilliseconds().toString());
+        
+        /*FileWriter fw = new FileWriter(casheFile);
         fw.write(v.getAccessToken() + " " + v.getRefreshToken() + " " + v.getExpirationTimeMilliseconds());
-        fw.close();
+        fw.close();*/
         return this;
     }
 

@@ -121,7 +121,7 @@ public class AuthConfirmServlet extends HttpServlet {
             String code = request.getParameter("code");
             TokenResponse tokenResponse = api.getFlow().newTokenRequest(code).setRedirectUri(api.getUrlRedirect()).execute();
             api.getFlow().createAndStoreCredential(tokenResponse, api.getUserId());
-	        response.getWriter().append("AT: " + tokenResponse.getAccessToken());
+	        response.getWriter().append("AT: " + api.getUrlRedirect());
         } catch (Exception ex) {
         	ex.printStackTrace();
         }

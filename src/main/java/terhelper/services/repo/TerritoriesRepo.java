@@ -40,7 +40,6 @@ public class TerritoriesRepo extends Repo{
     public Territory[] getAllTerritories() throws IOException, GeneralSecurityException, MalformedURLException, ClassNotFoundException {
         if (0 == territories.length) {       
             GenericUrl url = new GenericUrl("https://territoryhelper.com/api/territories").set("access_token", api.getAccessToken());
-            System.out.println(url.build());
             CloseableHttpResponse response =  api.sendRequest(url);
             territories = (Territory[]) api.getResultFromRessponse(response, Territory[].class);
         }
