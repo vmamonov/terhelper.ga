@@ -24,6 +24,7 @@ import com.google.api.client.http.HttpRequest;
 import com.google.api.client.json.jackson2.JacksonFactory;
 
 import redis.clients.jedis.Jedis;
+import terhelper.AppConfig;
 import terhelper.Env;
 import terhelper.exceptions.TokenExpiresException;
 import terhelper.models.Location;
@@ -41,25 +42,19 @@ import terhelper.services.storages.Redis;
 public class LocationsGetterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public LocationsGetterServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-        	
-        	
-        	
-        	
         	System.out.println("Get locations: Start...");
-            TerritoryHelperApi api = new TerritoryHelperApi.Builder("5dc2c712c9c5472c859392b103064814", "6722084eb68640b4b9a6d8ab540e6f6f").build();
+            TerritoryHelperApi api = new TerritoryHelperApi.Builder(
+        		AppConfig.getInstance().getUserIdForApi(), 
+        		AppConfig.getInstance().getSecretForApi())
+    		.build();
             if(null == api.doAuth()) {
             	response.sendRedirect(api.getUrlAuth().build());
             } 
@@ -83,34 +78,14 @@ public class LocationsGetterServlet extends HttpServlet {
             }
             CacheStorage.unitsSave(units);
             System.out.println("Get locations: Completed ");
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-        //} catch (TokenExpiresException ex) {
-        	//response.sendRedirect(api.getUrlAuth().build());
         } catch (Exception ex) {
         	System.out.println("Get locations: Failed");
             ex.printStackTrace();
         } 
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

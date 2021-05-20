@@ -14,9 +14,11 @@ public class Redis {
 		return self.get(keyRoot +"." + key);
 	}
 	
+	
 	public String set(String key, String value) {
 		return self.set(keyRoot +"."+ key, value);
 	}
+
 	
 	public String set(String key, String value, long seconds) {
 		String keyResult = keyRoot +"."+ key;
@@ -25,12 +27,6 @@ public class Redis {
 		return result;
 	}
 	
-//	public Long set(String key, Long value, long seconds) {
-//		String keyResult = keyRoot +"."+ key;
-//		Long result = self.set(keyResult, value, seconds);
-//		self.expire(keyResult, seconds);
-//		return result;
-//	}
 	
 	public Boolean exists(final String key) {
 		return self.exists(keyRoot +"."+ key);

@@ -4,21 +4,14 @@ package terhelper.services;
 import com.google.api.client.auth.oauth.OAuthGetAccessToken;
 import com.google.api.client.auth.oauth.OAuthGetTemporaryToken;
 import com.google.api.client.auth.oauth2.AuthorizationCodeFlow;
-import com.google.api.client.auth.oauth2.AuthorizationCodeRequestUrl;
 import com.google.api.client.auth.oauth2.BearerToken;
 import com.google.api.client.auth.oauth2.Credential;
-import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
-import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpExecuteInterceptor;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import terhelper.services.storages.*;
-import java.io.Reader;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
 import java.security.MessageDigest;
@@ -26,16 +19,10 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.Date;
 
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-
 public class TerritoryHelperApi extends Api{
     protected Date date = new Date();
     private TerritoryHelperApi.Builder builder;
     protected Credential credential;    
-//    private String authUrl;
       
     public static class Builder {
         private AuthorizationCodeFlow flow;
@@ -78,26 +65,11 @@ public class TerritoryHelperApi extends Api{
 				        public void intercept(HttpRequest hr) throws IOException {}
 				    },
 				    userId,
-				    urlAccessToken.build()
-					)
+				    urlAccessToken.build())
 			    .setCredentialDataStore(new LocalFileStorage("./cashe/main", "auth"))
-			    .build();
-            
-//         	private final String hostConfirm = "terhelper.ga";
-//        	private final Integer portConfirm = 80;
-//        	private final String collbackPathConfirm = "/auth-confirm";
-//            authCodeManager =  new AuthorizationCodeInstalledApp(flow, 
-//            	new LocalServerReceiver.Builder().setHost(hostConfirm).setPort(portConfirm).setCallbackPath(collbackPathConfirm).build()     		
-//    		);
+			    .build();            
         }
 
-//        new LocalServerReceiver(urlConfirm, portConfirm, collbackPathConfirm, null, null)
-        
-//        public AuthorizationCodeInstalledApp getAuthCodeManager() {
-//            return authCodeManager;
-//        }
-        
-//        public OAuthGetAccessToken 
         
         public TerritoryHelperApi build() throws IOException, GeneralSecurityException {
             return new TerritoryHelperApi(this);
@@ -110,13 +82,16 @@ public class TerritoryHelperApi extends Api{
         doAuth();
     }
 
+    
     public Credential getCredential() {
         return credential;
     }
     
+    
     public String getUrlRedirect() {
     	return builder.redirect_uri;
     }
+    
     
     protected boolean isValidAuth () {
         Long Timestamp = credential.getExpirationTimeMilliseconds();
@@ -126,7 +101,8 @@ public class TerritoryHelperApi extends Api{
         Integer minute = 60000;
         return (date.getTime() - 2*minute) < Timestamp;
     }
-        
+    
+    
     public OAuthGetAccessToken getUrlAuth() {
     	return builder.urlAccessToken;
     }
@@ -142,61 +118,22 @@ public class TerritoryHelperApi extends Api{
     	} else {
     		return credential;
     	}
-    	
-    	
-    	
-		/*if (credential != null
-		    && (credential.getRefreshToken() != null
-		    || credential.getExpiresInSeconds() == null
-		    || credential.getExpiresInSeconds() > 60)
-	    ) {
-			return credential;
-		} else {
-			return null;
-		}*/
-    	
-//    	AuthorizationCodeRequestUrl rr = builder.getAuthCodeManager().getFlow()
-//		.newAuthorizationUrl()
-//		.setRedirectUri(
-//			builder.getAuthCodeManager().getReceiver().getRedirectUri()
-//		);
-//    	
-//    	CloseableHttpClient httpClient = HttpClients.createDefault();
-//    	
-//    	CloseableHttpResponse response = httpClient.execute(new HttpGet(rr.build()));
-//    	
-//    	
-//    	System.out.println("Link " + rr.build());
-//    	
-//    	BufferedReader br = new BufferedReader(    
-//    			new InputStreamReader(response.getEntity().getContent())
-//		);
-//    	StringBuilder output = new StringBuilder();
-//    	  
-//	    String line = br.readLine();
-//	    while (line != null) {
-//	      output.append(line);
-//	      line = br.readLine();
-//	    }
-//    	authUrl = rr.build();
-//    	builder.getAuthCodeManager().getReceiver().stop();
-//    	System.out.println("dffd Link ");
-//        credential = builder.getAuthCodeManager().authorize(builder.userId);
-//        return credential;
     }
+    
+    
     public String getUserId() {
     	return builder.userId;
     }
+    
     
     public AuthorizationCodeFlow getFlow() {
     	return builder.flow;
     }
     
+    
     public String getAccessToken() throws IOException, GeneralSecurityException {
         if (!isValidAuth() && null != credential.getRefreshToken()) {
             credential.refreshToken();
-        } else {
-//            doAuth();
         }
         return credential.getAccessToken();
     }
