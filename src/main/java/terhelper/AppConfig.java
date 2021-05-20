@@ -11,7 +11,7 @@ import org.xml.sax.SAXException;
 
 public class AppConfig {
 	private static AppConfig self;
-	private String pathToConfigFile = Env.APP_PATH_ROOT + "terhelper/app-config.xml"; 
+	private String pathToConfigFile = Env.APP_PATH_ROOT + "../../app-config.xml"; 
 	private Document config;
 	
 	public static AppConfig getInstance() throws SAXException, IOException, ParserConfigurationException {

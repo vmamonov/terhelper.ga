@@ -7,9 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.tomcat.util.descriptor.web.WebXmlParser;
-import org.xml.sax.XMLReader;
-
 import com.google.api.client.http.GenericUrl;
 import terhelper.exceptions.TokenExpiresException;
 import terhelper.models.Unit;
