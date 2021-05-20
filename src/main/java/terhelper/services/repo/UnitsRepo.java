@@ -30,7 +30,6 @@ public class UnitsRepo extends Repo {
     
     public UnitsRepo setApi(TerritoryHelperApi api) {
         this.api = api;
-        WebXmlParser x = new WebXmlParser(false, false, false);
         return this;
     }
         
