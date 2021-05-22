@@ -94,8 +94,20 @@
 			          <version>2.22.1</version>
 		        </plugin>
 		        <plugin>
-			          <artifactId>maven-war-plugin</artifactId>
-			          <version>3.2.2</version>
+		          <artifactId>maven-war-plugin</artifactId>
+		          <version>3.2.2</version>
+		          <configuration>
+	                    <failOnMissingWebXml>false</failOnMissingWebXml>
+	                    <webResources>
+	                        <resource>
+	                            <directory>./</directory>
+	                            <includes>
+	                                <include>app-config.xml</include>
+	                            </includes>
+	                            <targetPath>./</targetPath>
+	                        </resource>
+	                    </webResources>
+	                </configuration>
 		        </plugin>
 		        <plugin>
 			          <artifactId>maven-install-plugin</artifactId>
