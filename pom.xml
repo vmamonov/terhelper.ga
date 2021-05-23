@@ -68,6 +68,30 @@
 	    <version>2.12.3</version>
 	</dependency>
   </dependencies>
+  
+  <profiles>
+  	<profile>
+  		<id>prod</id>
+		<build>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>tomcat-maven-plugin</artifactId>		
+					<configuration>
+						<url>https://terhelper.ga/</url>
+						<server>tomcat-deploy</server>
+						<path>/opt/tomcat/latest/webapps</path>
+						<executions>
+							<execution>
+								<echo>Ich deploe gerade zum Tomcat!!</echo>
+							</execution>
+						</executions>
+					</configuration>
+				</plugin>
+			</plugins>
+		</build>
+  	</profile>
+  </profiles>
 
   <build>
   	<defaultGoal>compile</defaultGoal>
