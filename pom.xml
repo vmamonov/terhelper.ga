@@ -73,13 +73,13 @@
   	<profile>
   		<id>prod</id>
 		<build>
-			<finalName>ROOT2</finalName>
+			<finalName>yROOT2</finalName>
 			<plugins>
 				<plugin>
 		          <artifactId>maven-war-plugin</artifactId>
 		          <version>3.2.2</version>
 		          <configuration>
-		          	<webappDirectory>/opt/tomcat/latest/webapps/${project.build.finalName}</webappDirectory>
+		          	<outputDirectory>/opt/tomcat/latest/webapps</outputDirectory>
 		          	<failOnMissingWebXml>false</failOnMissingWebXml>
                     <webResources>
                         <resource>
