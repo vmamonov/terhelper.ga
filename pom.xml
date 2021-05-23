@@ -79,6 +79,11 @@
 		          <artifactId>maven-war-plugin</artifactId>
 		          <version>3.2.2</version>
 		          <configuration>
+			          <executions>
+			          	<execution>
+			          		<echo>Opachki :) ${project.build.directory}/${project.build.finalName}</echo>
+			          	</execution>
+			          </executions>
 		          	<outputDirectory>/sites/</outputDirectory>
 		          	<warSourceDirectory>/sites/terhelper.ga/target/ROOT</warSourceDirectory>
 		          	<failOnMissingWebXml>false</failOnMissingWebXml>
