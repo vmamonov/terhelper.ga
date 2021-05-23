@@ -73,18 +73,13 @@
   	<profile>
   		<id>prod</id>
 		<build>
-			<finalName>yROOT33</finalName>
+			<finalName>yROOT4</finalName>
 			<plugins>
 				<plugin>
 		          <artifactId>maven-war-plugin</artifactId>
 		          <version>3.2.2</version>
 		          <configuration>
-			          <executions>
-			          	<execution>
-			          		<echo>Opachki :) ${project.build.directory}/${project.build.finalName}</echo>
-			          	</execution>
-			          </executions>
-		          	<outputDirectory>${project.build.directory}/hh/${project.build.finalName}</outputDirectory>
+		          	<outputDirectory>/opt/tomcat/latest/webapps</outputDirectory>
 		          	<warSourceDirectory>/sites/terhelper.ga/target/ROOT</warSourceDirectory>
 		          	<failOnMissingWebXml>false</failOnMissingWebXml>
                     <webResources>
