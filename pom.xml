@@ -78,7 +78,7 @@
 		          <artifactId>maven-war-plugin</artifactId>
 		          <version>3.2.2</version>
 		          <configuration>
-		          	<webappDirectory>/opt/tomcat/latest/webapps</webappDirectory>
+		          	<outputDirectory>/opt/tomcat/latest/webapps</outputDirectory>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                     <webResources>
                         <resource>
