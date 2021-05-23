@@ -84,7 +84,7 @@
 			          		<echo>Opachki :) ${project.build.directory}/${project.build.finalName}</echo>
 			          	</execution>
 			          </executions>
-		          	<outputDirectory>/sites/</outputDirectory>
+		          	<outputDirectory>${project.build.directory}/hh/${project.build.finalName}</outputDirectory>
 		          	<warSourceDirectory>/sites/terhelper.ga/target/ROOT</warSourceDirectory>
 		          	<failOnMissingWebXml>false</failOnMissingWebXml>
                     <webResources>
