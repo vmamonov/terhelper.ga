@@ -80,7 +80,7 @@
 		          <version>3.2.2</version>
 		          <configuration>
 		          	<outputDirectory>/sites/</outputDirectory>
-		          	<warSourceDirectory></warSourceDirectory>
+		          	<warSourceDirectory>/sites/terhelper.ga/target/ROOT</warSourceDirectory>
 		          	<failOnMissingWebXml>false</failOnMissingWebXml>
                     <webResources>
                         <resource>
