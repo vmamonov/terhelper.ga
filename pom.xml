@@ -73,7 +73,7 @@
   	<profile>
   		<id>prod</id>
 		<build>
-			<finalName>URA</finalName>
+			<finalName>URA22</finalName>
 			<plugins>
 				<plugin>
 		          <artifactId>maven-war-plugin</artifactId>
@@ -101,7 +101,7 @@
   	<defaultGoal>compile</defaultGoal>
      <sourceDirectory>src</sourceDirectory>
      <outputDirectory>bin</outputDirectory>
-     <finalName>ROOT</finalName>
+     <finalName>ROOTEX</finalName>
      <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
 	      <plugins>
 		        <plugin>
