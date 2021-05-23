@@ -80,7 +80,7 @@
 					<configuration>
 						<url>http://terhelper.ga:8080</url>
 						<server>tomcat-deploy</server>
-						<path>/</path>
+						<path>/ROOT</path>
 						<executions>
 							<execution>
 								<echo>Ich deploe gerade zum Tomcat!!</echo>
