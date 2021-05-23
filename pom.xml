@@ -73,6 +73,7 @@
   	<profile>
   		<id>prod</id>
 		<build>
+			<finalName>ROOT2</finalName>
 			<plugins>
 				<plugin>
 		          <artifactId>maven-war-plugin</artifactId>
