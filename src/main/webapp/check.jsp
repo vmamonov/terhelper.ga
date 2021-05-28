@@ -140,8 +140,6 @@
 				$('.search-result-item__box').remove();
 				Window.dataRaw.forEach (row => {	
 					if (row.name == $(el).val()) {
-						console.log($(el).val());
-						console.log(row.status);
 						var status = ("DoNotCall" == row.status) ? "Отказ" : "Письмо вернулось";
 						$('#search-result').append(	
 							"<div class='search-result-item__box col-12 col-md-6'>" +
