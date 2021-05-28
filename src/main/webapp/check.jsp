@@ -56,8 +56,6 @@
 			}
 		</style>
 		
-		
-
 		<div class="container root">
 			<div class="row">
 				<div class="col date_upd">
@@ -67,50 +65,14 @@
 			<div class="row">
 				<div class="col">
 					<form id="form_check">
-						<!-- <div class="form-group">
-							<button class="col btn btn-success btn-lg" type="submit">OK</button>
-						</div> -->
 						<div class="form-group">
 							<select id="search-field" class="col form-control form-control-lg" placeholder="Введите данные"></select>
-    						<!--  <input type="text" class="col form-control form-control-lg" placeholder="Фамилия / Nachname"> -->
   						</div>	
 					</form>
 				</div>
 			</div>
-<!-- 			<div class="row">
-				<div class="col text-center">
-					<div id="preloader" class="spinner-border text-success" role="status" disabled>
-						<span class="sr-only">Loading...</span>
-					</div>
-				</div>
-				
-			</div> -->	
-			<div id="search-result" class="row">
-<!-- 				<div class="col-12 col-md-6">
-					<div class="search-result-item">
-						<div class="search-result-item__status">
-							
-						</div> 
-						<div class="search-result-item__name">Ivanov Ivan</div>
-						<div class="search-result-item__adresse">df adf adf agr arg tgbsabgv s</div>
-					</div>
-				</div>
-				<div class="col-12 col-md-6">
-					<div class="search-result-item">
-						<div class="search-result-item__status">
-							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-circle-fill" viewBox="0 0 16 16">
-							  <circle cx="8" cy="8" r="8"/>
-							</svg>
-							Отказ
-						</div>  
-						<div class="search-result-item__name">Petrov Petr</div> 
-						<div class="search-result-item__adresse">01855 Heiaflr fkdsjdfkgjnsv 25</div>
-					</div>
-				</div> -->
-				
-			</div>
+			<div id="search-result" class="row"></div>
 		</div>
-		
 		
 		<script type="text/javascript">
 			Window.dataRaw = <%= request.getAttribute("data") %>;
@@ -162,7 +124,6 @@
 				$('#search-result').slideDown('fast');
 			}
 		</script>	
-		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-87SHFLMBS5"></script>
 		<script>
 		  window.dataLayer = window.dataLayer || [];
