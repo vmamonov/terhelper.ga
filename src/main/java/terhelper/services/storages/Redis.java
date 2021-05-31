@@ -18,6 +18,11 @@ public class Redis {
 	public String set(String key, String value) {
 		return self.set(keyRoot +"."+ key, value);
 	}
+	
+	public long ttl(String key) {
+		String keyResult = keyRoot +"."+ key;
+		return self.ttl(keyResult);
+	}
 
 	
 	public String set(String key, String value, long seconds) {
