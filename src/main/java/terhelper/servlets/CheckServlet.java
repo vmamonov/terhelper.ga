@@ -31,6 +31,7 @@ public class CheckServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		request.setAttribute("data", dataMart.getResult());
 		request.setAttribute("dateUpdate", dataMart.getDateUpdate());
+		request.setAttribute("env", AppConfig.getInstance().getEnv());
 		request.getRequestDispatcher("/check.jsp").forward(request, response);
 	}
 

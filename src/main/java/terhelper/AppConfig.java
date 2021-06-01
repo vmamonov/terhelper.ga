@@ -14,19 +14,24 @@ public class AppConfig {
 	private String pathToConfigFile = Env.APP_PATH_ROOT + "../../app-config.xml"; 
 	private Document config;
 	
-	public static AppConfig getInstance() throws SAXException, IOException, ParserConfigurationException {
+	public static AppConfig getInstance() {
 		if (null == self) {
 			self = new AppConfig();
 		}	
 		return self;
 	}
 	
-	private AppConfig() throws SAXException, IOException, ParserConfigurationException {
-		config = DocumentBuilderFactory
-				.newInstance()
-				.newDocumentBuilder()
-				.parse(new File(pathToConfigFile));
-		config.normalize();
+	private AppConfig()  {
+		try {
+			config = DocumentBuilderFactory
+					.newInstance()
+					.newDocumentBuilder()
+					.parse(new File(pathToConfigFile));
+			config.normalize();
+		} catch (Exception e) {
+			System.exit(0);
+			e.printStackTrace();
+		}	
 	}
 	
 	public String getUserIdForApi() {
@@ -35,5 +40,11 @@ public class AppConfig {
 	
 	public String getSecretForApi() {
 		return config.getElementsByTagName("secret").item(0).getTextContent();
+	}
+	
+	public String getEnv() {
+		String env = config.getElementsByTagName("env").item(0).getTextContent();
+		return ((null == env) || env.isEmpty()) ? "prod" : env;
+		
 	}
 }

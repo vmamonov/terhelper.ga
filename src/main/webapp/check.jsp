@@ -59,6 +59,11 @@
 		<div class="container root">
 			<div class="row">
 				<div class="col date_upd">
+					<%  String env = (String)request.getAttribute("env");
+						if ("test".equals(env)) {
+							out.print(env);
+						} 
+					%> <br>
 					<%= request.getAttribute("dateUpdate") %> <br>	
 				</div>
 			</div>
