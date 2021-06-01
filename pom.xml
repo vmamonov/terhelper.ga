@@ -95,6 +95,31 @@
 			</plugins>
 		</build>
   	</profile>
+  	<profile>
+  		<id>test</id>
+		<build>
+			<finalName>test</finalName>
+			<plugins>
+				<plugin>
+		          <artifactId>maven-war-plugin</artifactId>
+		          <version>3.2.2</version>
+		          <configuration>
+		          	<outputDirectory>/opt/tomcat/latest/webapps</outputDirectory>
+		          	<failOnMissingWebXml>false</failOnMissingWebXml>
+                    <webResources>
+                        <resource>
+                            <directory>./</directory>
+                            <includes>
+                                <include>app-config.xml</include>
+                            </includes>
+                            <targetPath>./</targetPath>
+                        </resource>
+                    </webResources>
+	                </configuration>
+		        </plugin>
+			</plugins>
+		</build>
+  	</profile>
   </profiles>
 
   <build>
