@@ -21,6 +21,10 @@ public class AppConfig {
 		return self;
 	}
 	
+	public static void test() {
+		new AppConfig();
+	}
+	
 	private AppConfig()  {
 		try {
 			config = DocumentBuilderFactory
@@ -29,8 +33,8 @@ public class AppConfig {
 					.parse(new File(pathToConfigFile));
 			config.normalize();
 		} catch (Exception e) {
-			System.exit(0);
 			e.printStackTrace();
+			System.exit(0);
 		}	
 	}
 	
@@ -44,7 +48,7 @@ public class AppConfig {
 	
 	public String getEnv() {
 		String env = config.getElementsByTagName("env").item(0).getTextContent();
-		return ((null == env) || env.isEmpty()) ? "prod" : env;
+		return ((null == env) || env.isEmpty()) ? Env.PROD : env;
 		
 	}
 }
