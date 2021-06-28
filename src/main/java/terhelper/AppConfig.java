@@ -16,10 +16,6 @@ public class AppConfig {
 		return self;
 	}
 	
-	public static void test() {
-		new AppConfig();
-	}
-	
 	private AppConfig()  {
 		try {
 			config = DocumentBuilderFactory
