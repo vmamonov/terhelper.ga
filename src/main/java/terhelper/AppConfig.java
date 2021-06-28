@@ -18,6 +18,7 @@ public class AppConfig {
 	
 	private AppConfig()  {
 		try {
+			System.out.print(pathToConfigFile);
 			config = DocumentBuilderFactory
 				.newInstance()
 				.newDocumentBuilder()
