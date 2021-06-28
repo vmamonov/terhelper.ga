@@ -19,9 +19,9 @@ public class AppConfig {
 	private AppConfig()  {
 		try {
 			config = DocumentBuilderFactory
-					.newInstance()
-					.newDocumentBuilder()
-					.parse(new File(pathToConfigFile));
+				.newInstance()
+				.newDocumentBuilder()
+				.parse(new File(pathToConfigFile));
 			config.normalize();
 		} catch (Exception e) {
 			e.printStackTrace();
