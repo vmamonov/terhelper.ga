@@ -6,7 +6,7 @@ import org.w3c.dom.*;
 
 public class AppConfig {
 	private static AppConfig self;
-	private String pathToConfigFile = System.getenv("SITES_CONFIG_PATH") + "/terhelper/app-config.xml"; 
+	private String pathToConfigFile; 
 	private Document config;
 	
 	public static AppConfig getInstance() {
@@ -18,7 +18,13 @@ public class AppConfig {
 	
 	private AppConfig()  {
 		try {
-			System.out.print(pathToConfigFile);
+			//@TODO 
+			/** 
+			  pathToConfigFile = (null == System.getenv("test")) 
+					? "/sites/conf/terhelper/app-config.xml"
+					: System.getenv("test") + "/terhelper/app-config.xml"; 
+			**/
+			pathToConfigFile = "/sites/conf/terhelper/app-config.xml";
 			config = DocumentBuilderFactory
 				.newInstance()
 				.newDocumentBuilder()
@@ -26,7 +32,7 @@ public class AppConfig {
 			config.normalize();
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.exit(0);
+			//System.exit(0);
 		}	
 	}
 	
