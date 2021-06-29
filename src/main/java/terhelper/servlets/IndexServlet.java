@@ -19,7 +19,7 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String envName = request.getParameter("env");
 		System.out.println("env "+envName+":" + System.getenv(envName));
-		request.getRequestDispatcher("/check.jsp").forward(request, response);
+		request.getRequestDispatcher("/check").forward(request, response);
 		//request.getRequestDispatcher("/check").forward(request, response);
 		//request.getRequestDispatcher("/check").forward(request, response);
 	}
