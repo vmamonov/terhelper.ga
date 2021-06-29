@@ -6,7 +6,7 @@ import org.w3c.dom.*;
 
 public class AppConfig {
 	private static AppConfig self;
-	private String pathToConfigFile = System.getenv("test") + "/terhelper/app-config.xml"; 
+	private String pathToConfigFile; 
 	private Document config;
 	
 	public static AppConfig getInstance() {
@@ -18,6 +18,8 @@ public class AppConfig {
 	
 	private AppConfig()  {
 		try {
+			//@TODO 
+			pathToConfigFile = (null == System.getenv("test")) ? "/sites/conf/terhelper/app-config.xml": System.getenv("test") + "/terhelper/app-config.xml";
 			config = DocumentBuilderFactory
 				.newInstance()
 				.newDocumentBuilder()
