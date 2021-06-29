@@ -17,7 +17,8 @@ public class IndexServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/check").forward(request, response);
+		System.out.println("env " + System.getenv("test"));
+		//request.getRequestDispatcher("/check").forward(request, response);
 	}
 
 
