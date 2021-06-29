@@ -24,6 +24,7 @@ public class AppConfig {
 					? "/sites/conf/terhelper/app-config.xml"
 					: System.getenv("test") + "/terhelper/app-config.xml"; 
 			**/
+			System.out.println("env " + System.getenv("test"));
 			pathToConfigFile = "/sites/conf/terhelper/app-config.xml";
 			config = DocumentBuilderFactory
 				.newInstance()
