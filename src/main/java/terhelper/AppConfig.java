@@ -6,7 +6,7 @@ import org.w3c.dom.*;
 
 public class AppConfig {
 	private static AppConfig self;
-	private String pathToConfigFile = System.getenv("TEST") + "/terhelper/app-config.xml"; 
+	private String pathToConfigFile = System.getenv("test") + "/terhelper/app-config.xml"; 
 	private Document config;
 	
 	public static AppConfig getInstance() {
