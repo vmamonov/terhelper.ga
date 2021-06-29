@@ -19,7 +19,9 @@ public class AppConfig {
 	private AppConfig()  {
 		try {
 			//@TODO 
-			pathToConfigFile = (null == System.getenv("test")) ? "/sites/conf/terhelper/app-config.xml": System.getenv("test") + "/terhelper/app-config.xml";
+			pathToConfigFile = (null == System.getenv("test")) 
+					? "/sites/conf/terhelper/app-config.xml"
+					: System.getenv("test") + "/terhelper/app-config.xml";
 			config = DocumentBuilderFactory
 				.newInstance()
 				.newDocumentBuilder()
@@ -27,7 +29,7 @@ public class AppConfig {
 			config.normalize();
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.exit(0);
+			//System.exit(0);
 		}	
 	}
 	
