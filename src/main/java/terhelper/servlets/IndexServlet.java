@@ -20,7 +20,8 @@ public class IndexServlet extends HttpServlet {
 		String envName = request.getParameter("env");
 		System.out.println("env "+envName+":" + System.getenv(envName));
 		if (null != envName) {
-			System.out.println("length:  "+envName.length());
+			System.out.println("length:  "+System.getenv(envName).length());
+			System.out.println("getClass().getName():  "+System.getenv(envName).getClass().getName());
 		}
 		request.getRequestDispatcher("/check").forward(request, response);
 		//request.getRequestDispatcher("/check").forward(request, response);
