@@ -1,43 +1,43 @@
 package terhelper.services.storages;
 
-import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 public class Redis {
-	private Jedis jedis;
+	private JedisPool pool;
 	private String keyRoot = "th";
 
 	public Redis() { 
-		jedis = new Jedis("localhost", 6379);
+		pool = new JedisPool("localhost", 6379);
 	}
 	
 	public String get(String key) {
-		return jedis.get(keyRoot +"." + key);
+		return pool.getResource().get(keyRoot +"." + key);
 	}
 	
 	
 	public String set(String key, String value) {
-		return jedis.set(keyRoot +"."+ key, value);
+		return pool.getResource().set(keyRoot +"."+ key, value);
 	}
 	
 	public long ttl(String key) {
 		String keyResult = keyRoot +"."+ key;
-		return jedis.ttl(keyResult);
+		return pool.getResource().ttl(keyResult);
 	}
 
 	
 	public String set(String key, String value, long seconds) {
 		String keyResult = keyRoot +"."+ key;
-		String result = jedis.set(keyResult, value);
-		jedis.expire(keyResult, seconds);
+		String result = pool.getResource().set(keyResult, value);
+		pool.getResource().expire(keyResult, seconds);
 		return result;
 	}
 	
 	
 	public Boolean exists(final String key) {
-		return jedis.exists(keyRoot +"."+ key);
+		return pool.getResource().exists(keyRoot +"."+ key);
 	}
 	
 	public Long del(final String key) {
-		return jedis.del(keyRoot +"."+ key);
+		return pool.getResource().del(keyRoot +"."+ key);
 	}
 }
