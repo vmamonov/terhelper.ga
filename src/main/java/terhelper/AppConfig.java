@@ -46,8 +46,9 @@ public class AppConfig {
 	}
 	
 	public String getEnv() {
-		String env = config.getElementsByTagName("env").item(0).getTextContent();
-		return ((null == env) || env.isEmpty()) ? Env.PROD : env;
+		return Env.PROD;
+		//String env = config.getElementsByTagName("env").item(0).getTextContent();
+		//return ((null == env) || env.isEmpty()) ? Env.PROD : env;
 		
 	}
 }
