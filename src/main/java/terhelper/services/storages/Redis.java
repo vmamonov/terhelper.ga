@@ -1,43 +1,48 @@
 package terhelper.services.storages;
 
-import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.Jedis;
 
 public class Redis {
-	private JedisPool pool;
+	private Jedis redisClient;
 	private String keyRoot = "th";
 
 	public Redis() { 
-		pool = new JedisPool("localhost", 6379);
+		redisClient = new Jedis("localhost", 6379);
 	}
 	
 	public String get(String key) {
-		return pool.getResource().get(keyRoot +"." + key);
+		return redisClient.get(keyRoot +"." + key);
 	}
 	
 	
 	public String set(String key, String value) {
-		return pool.getResource().set(keyRoot +"."+ key, value);
+		return redisClient.set(keyRoot +"."+ key, value);
 	}
 	
 	public long ttl(String key) {
 		String keyResult = keyRoot +"."+ key;
-		return pool.getResource().ttl(keyResult);
+		return redisClient.ttl(keyResult);
 	}
 
 	
 	public String set(String key, String value, long seconds) {
 		String keyResult = keyRoot +"."+ key;
-		String result = pool.getResource().set(keyResult, value);
-		pool.getResource().expire(keyResult, seconds);
+		String result = redisClient.set(keyResult, value);
+		redisClient.expire(keyResult, seconds);
 		return result;
 	}
 	
 	
 	public Boolean exists(final String key) {
-		return pool.getResource().exists(keyRoot +"."+ key);
+		return redisClient.exists(keyRoot +"."+ key);
 	}
 	
 	public Long del(final String key) {
-		return pool.getResource().del(keyRoot +"."+ key);
+		return redisClient.del(keyRoot +"."+ key);
+	}
+	
+	@Override
+	public void finalize() {
+		redisClient.close();
 	}
 }
