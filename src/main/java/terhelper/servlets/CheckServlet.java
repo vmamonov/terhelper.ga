@@ -27,6 +27,20 @@ public class CheckServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//@TODO
+		String envName = request.getParameter("env");
+		if (null != envName) {
+			String envVal = System.getenv(envName);
+			System.out.println("env "+envName+": " + envVal);
+			if (null != envVal) {
+				System.out.println("length:  "+System.getenv(envName).length());
+				System.out.println("getClass().getName():  "+System.getenv(envName).getClass().getName());
+			} else {
+				System.out.println("envVal is null");
+			}
+		}
+		
+		
 		NamesCheck dataMart = new NamesCheck();
 		response.setContentType("text/html;charset=UTF-8");
 		request.setAttribute("data", dataMart.getResult());
