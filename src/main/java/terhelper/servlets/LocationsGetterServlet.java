@@ -70,12 +70,14 @@ public class LocationsGetterServlet extends HttpServlet {
             ArrayList<Unit> units = new ArrayList<Unit>();
             for (Territory terItem : territories) {
             	Thread.sleep(1000);
+            	System.out.println("terItem.Id: " + terItem.Id + " -> " + terItem.Address);
             	ArrayList<Location> locations = repoLoc.getLocationsByTerritoryId(terItem.Id);
             	CacheStorage.locationsSave(locations);           	
             	for (Location loc : locations ) {
             		units.addAll(repoUnit.getUnitsByLocationId(loc.Id));
             	}
             }
+            System.out.println("unitsSave...");
             CacheStorage.unitsSave(units);
             System.out.println("Get locations: Completed ");
         } catch (Exception ex) {
