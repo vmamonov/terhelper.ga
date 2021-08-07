@@ -43,7 +43,7 @@ public class UnitsRepo extends Repo {
         Unit[] tmp = (Unit[]) api.getResultFromRessponse(response, Unit[].class); 
         ArrayList<Unit> result = new ArrayList<Unit>(Arrays.asList(tmp));  
         units.put(locationId, result); 
-        System.out.println("get units by Locations: " + url.build() + " result(size): " + result.size());
+        //System.out.println("get units by Locations: " + url.build() + " result(size): " + result.size());
         return result;
     }    
 }

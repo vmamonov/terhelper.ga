@@ -15,7 +15,7 @@ public final class CacheStorage {
     	if (units.size() > 0) {
     		String key = "unit";
     		String keyUnitsList = key + ".ids";
-    		System.out.println("keyUnitsList: " + keyUnitsList);
+    		//System.out.println("keyUnitsList: " + keyUnitsList);
     		cache.del(keyUnitsList);
     		cache.set(key + ".count", Integer.toString(units.size()), ttlSecDefault);
     		cache.set(key + ".date-upd", new Date().toString(), ttlSecDefault);
