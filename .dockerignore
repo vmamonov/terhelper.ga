@@ -1,0 +1,8 @@
+.git
+.settings
+bin
+java
+target
+nb-configuration.xml
+dump.rdb
+.project

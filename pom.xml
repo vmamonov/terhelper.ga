@@ -25,7 +25,7 @@
 	    <groupId>org.mockito</groupId>
 	    <artifactId>mockito-core</artifactId>
 	    <version>3.11.2</version>
-	    <scope>test</scope>
+	    <!--	      <scope>test</scope> -->
 	</dependency>
   	<dependency>
 	    <groupId>redis.clients</groupId>
@@ -47,7 +47,7 @@
 	      <groupId>junit</groupId>
 	      <artifactId>junit</artifactId>
 	      <version>4.11</version>
-	      <scope>test</scope>
+<!--	      <scope>test</scope> -->
     </dependency>
 <!--     ??????????? https://mvnrepository.com/artifact/com.google.api-client/google-api-client -->
 	<dependency>
