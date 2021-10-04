@@ -7,7 +7,7 @@ public class Redis {
 	private String keyRoot = "th";
 
 	public Redis() { 
-		redisClient = new Jedis("localhost", 6379);
+		redisClient = new Jedis("redis", 6379);
 	}
 	
 	public String get(String key) {

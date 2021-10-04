@@ -1,14 +1,25 @@
 version: "3.9"
 services:
-    server:
+    app:
         build: .
-        ports: 
-            - "8080:8080"
-        volumes:
+        command: "mvn install -Pprod"
+        depends_on:
+            - "redis"
+            - "tomcat"
+        volumes: 
+            - ./docker-volumes/tomcat-webapps:/sites/terhelper/docker-volumes/tomcat-webapps
             - .:/sites/terhelper
-        environment:
-            MY_ENV: "/sites/my!!!!"
     redis:
         image: "redis:6.2.5"
         ports: 
             - "6379:6379"
+        restart: always
+        volumes:
+            - ./docker-volumes/redis:/data
+    tomcat:
+        image: "tomcat:8.5.71-jdk17-temurin-focal"
+        ports: 
+            - "8080:8080"
+        restart: always
+        volumes: 
+            - ./docker-volumes/tomcat-webapps:/usr/local/tomcat/webapps

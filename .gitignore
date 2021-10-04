@@ -28,3 +28,5 @@ hs_err_pid*
 .settings
 *.rdb
 /src/main/java/terhelper/app-config.xml
+docker-volumes
+.classpath
