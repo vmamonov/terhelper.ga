@@ -85,7 +85,7 @@
 		          <artifactId>maven-war-plugin</artifactId>
 		          <version>3.2.2</version>
 		          <configuration>
-		          	<outputDirectory>/sites/terhelper/docker-volumes/tomcat-webapps</outputDirectory>
+		          	<outputDirectory>/apps/docker/volumes/tomcat/webapps</outputDirectory>
 		          	<failOnMissingWebXml>false</failOnMissingWebXml>
 	              </configuration>
 		        </plugin>
@@ -101,7 +101,7 @@
 		          <artifactId>maven-war-plugin</artifactId>
 		          <version>3.2.2</version>
 		          <configuration>
-		          	<outputDirectory>/sites/terhelper/docker-volumes/tomcat-webapps</outputDirectory>
+		          	<outputDirectory>/apps/docker/volumes/tomcat/webapps</outputDirectory>
 		          	<failOnMissingWebXml>false</failOnMissingWebXml>
 	              </configuration>
 		        </plugin>
