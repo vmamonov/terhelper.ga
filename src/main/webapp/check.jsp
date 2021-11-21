@@ -63,7 +63,7 @@
 						if ("test".equals(env)) {
 							out.print(env);
 						} 
-					%> 11<br>
+					%><br>
 					<%= request.getAttribute("dateUpdate") %> <br>	
 				</div>
 			</div>
