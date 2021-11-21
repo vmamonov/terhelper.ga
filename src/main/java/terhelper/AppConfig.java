@@ -18,7 +18,7 @@ public class AppConfig {
 	
 	public AppConfig()  {
 		try {
-			pathToConfigFile = "/sites/terhelper/src/main/java/terhelper/app-config.xml";
+			pathToConfigFile = "/apps/terhelper/app-config.xml";
 			config = DocumentBuilderFactory
 				.newInstance()
 				.newDocumentBuilder()
