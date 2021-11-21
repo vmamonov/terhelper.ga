@@ -2,13 +2,14 @@
 
 FROM centos:centos8.3.2011
 
-RUN mkdir -p /sites/terhelper/src/
-WORKDIR /sites/terhelper
-COPY src /sites/terhelper/src/
+RUN mkdir -p /apps/terhelper/src/
+WORKDIR /apps/terhelper
+COPY src /apps/terhelper/src/
 COPY .gitignore .gitignore
 COPY Dockerfile Dockerfile
 COPY .dockerignore .dockerignore
 COPY pom.xml pom.xml
+COPY app-config.xml app-config.xml
 
 RUN yum install -y java-1.8.0-openjdk
 #RUN yum install -y make
