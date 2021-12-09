@@ -10,8 +10,6 @@
   <packaging>war</packaging>
 
   <name>terhelper Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -85,7 +83,7 @@
 		          <artifactId>maven-war-plugin</artifactId>
 		          <version>3.2.2</version>
 		          <configuration>
-		          	<outputDirectory>/apps/docker/volumes/tomcat/webapps</outputDirectory>
+		          	<outputDirectory>/docker_apps/volumes/tomcat/webapps</outputDirectory>
 		          	<failOnMissingWebXml>false</failOnMissingWebXml>
 	              </configuration>
 		        </plugin>
@@ -101,7 +99,7 @@
 		          <artifactId>maven-war-plugin</artifactId>
 		          <version>3.2.2</version>
 		          <configuration>
-		          	<outputDirectory>/apps/docker/volumes/tomcat/webapps</outputDirectory>
+		          	<outputDirectory>/docker_apps/volumes/tomcat/webapps</outputDirectory>
 		          	<failOnMissingWebXml>false</failOnMissingWebXml>
 	              </configuration>
 		        </plugin>

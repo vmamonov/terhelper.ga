@@ -1,13 +1,15 @@
 package terhelper.services.storages;
 
 import redis.clients.jedis.Jedis;
+import terhelper.AppConfig;
 
 public class Redis {
 	private Jedis redisClient;
 	private String keyRoot = "th";
 
 	public Redis() { 
-		redisClient = new Jedis("redis", 6379);
+		redisClient = new Jedis("redis", 50000);
+		redisClient.auth(AppConfig.getInstance().getRedisPassword());
 	}
 	
 	public String get(String key) {

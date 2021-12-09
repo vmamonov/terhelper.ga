@@ -38,10 +38,11 @@ public class AppConfig {
 		return config.getElementsByTagName("secret").item(0).getTextContent();
 	}
 	
+	public String getRedisPassword() {
+		return config.getElementsByTagName("redispassword").item(0).getTextContent();
+	}
+	
 	public String getEnv() {
-		return Env.PROD;
-		//String env = config.getElementsByTagName("env").item(0).getTextContent();
-		//return ((null == env) || env.isEmpty()) ? Env.PROD : env;
-		
+		return Env.PROD;		
 	}
 }
