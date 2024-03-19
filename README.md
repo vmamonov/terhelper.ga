@@ -1,4 +1,4 @@
-# Ein Java-basierender Webdienst für eine Kommunikation durch eine REST-API eines Drittanbieters.
+# Ein Java-basierter Webdienst zur Kommunikation über eine REST-API eines Drittanbieters.
 ## Unterscheidungsmerkmale:
 - OAuth2 - Authorization durch Google OAuth-Client
 - REST - Kommunikation durch einem Dritt-API-Anbieter
